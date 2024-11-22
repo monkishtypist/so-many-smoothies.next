@@ -39,11 +39,23 @@ jobs:
           restore-keys: |
             pnpm-${{ runner.os }}-
 
+      - name: Restore Next.js Cache
+        uses: actions/cache@v3
+        with:
+          path: .next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('**/package.json', '**/pnpm-lock.yaml') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Build application
         run: pnpm build
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: ${{ secrets.NEXT_PUBLIC_SANITY_API_VERSION }}
 
       - name: Deploy to S3
         run: |
