@@ -8,6 +8,9 @@ on:
       - main
   # Manual trigger for testing
   workflow_dispatch:
+  # Trigger on repository_dispatch event
+  repository_dispatch:
+    types: [rebuild]
 
 jobs:
   deploy:
