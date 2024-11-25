@@ -29,13 +29,11 @@ Welcome to **So Many Smoothies**, a modern Next.js app for managing and showcasi
     git clone https://github.com/<your-username>/so-many-smoothies.next.git
     cd so-many-smoothies.next
     ```
-
 2. **Install dependencies**:
     ```bash
     Copy code
     pnpm install
     ```
-
 3. **Environment Variables**: Create a `.env.local` file in the root of the project:
     ```env
     Copy code
@@ -56,16 +54,15 @@ Visit the app at [http://localhost:3000](http://localhost:3000).
 
 
 ## Building for Production
+
 1. Build the static site:
     ```bash
     pnpm run build
     ```
-
 2. Preview the build:
     ```bash
     pnpm run start
     ```
-
 3. Deploy the contents of the out/ directory to your S3 bucket.
 
 
@@ -73,6 +70,7 @@ Visit the app at [http://localhost:3000](http://localhost:3000).
 This app is set up for static deployment to an AWS S3 bucket.
 
 ### Steps:
+
 1. Ensure next.config.js is configured with:
     ```javascript
     output: 'export',
@@ -104,8 +102,8 @@ This app is set up for static deployment to an AWS S3 bucket.
 ```plaintext
 .
 ├── app/                    # Application logic and pages
-│   ├── smoothies/          # Dynamic smoothie detail pages
-│   └── _services/          # API services (e.g., Sanity client)
+│   ├── _services/          # API services (e.g., Sanity client)
+│   └── smoothies/          # Dynamic smoothie detail pages
 ├── public/                 # Static assets
 ├── styles/                 # Global styles
 ├── next.config.js          # Next.js configuration
