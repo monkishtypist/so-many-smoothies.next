@@ -1,3 +1,5 @@
+// /app/smoothies/[id]/page.tsx
+
 import { getSmoothies } from '@/app/_services/sanity';
 import Image from 'next/image';
 
