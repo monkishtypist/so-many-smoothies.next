@@ -1,58 +1,36 @@
-// /app/page.tsx
+// app/page.tsx
 
-import Image from 'next/image';
-import Link from 'next/link'; // Import the Link component
-import { getSmoothies } from '@/app/_services/sanity';
+import { getPosts, getSmoothies } from '@services/sanity';
 
-// Fetch data directly in the Server Component
+import Header from '@components/Header';
+import Intro from '@components/Intro';
+import FiltersBar from '@components/FiltersBar';
+import RecipeGrid from '@components/RecipeGrid';
+import Footer from '@components/Footer';
+
 export default async function HomePage() {
   const smoothies = await getSmoothies();
+  const posts = await getPosts();
 
   return (
-    <main className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-8">So Many Smoothies</h1>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {smoothies.map(
-          (smoothie: {
-            _id: string;
-            image?: { url: string; alt: string };
-            title: string;
-            description: string;
-          }) => (
-            <li
-              key={smoothie._id}
-              className="smoothie-card border rounded-lg overflow-hidden shadow-md"
-            >
-              <Link
-                href={`/smoothies/${smoothie._id}`}
-                className="block hover:shadow-lg transition-shadow duration-300"
-              >
-                {smoothie.image ? (
-                  <Image
-                    src={smoothie.image.url}
-                    alt={smoothie.image.alt || smoothie.title}
-                    className="w-full h-40 object-cover"
-                    width={300}
-                    height={160} // Required for next/image
-                  />
-                ) : (
-                  <div className="w-full h-40 bg-gray-200 flex items-center justify-center">
-                    <span>No Image Available</span>
-                  </div>
-                )}
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">
-                    {smoothie.title}
-                  </h2>
-                  <p className="text-gray-700 text-sm line-clamp-2">
-                    {smoothie.description}
-                  </p>
-                </div>
-              </Link>
-            </li>
-          )
-        )}
-      </ul>
-    </main>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
+      {/* Max-width container */}
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
+        <Header />
+        <main className="flex-grow">
+          <Intro />
+          <FiltersBar />
+          <RecipeGrid
+            smoothies={smoothies.map((smoothie) => ({
+              ...smoothie,
+              url: `/smoothie/${smoothie.title.replace(/\s+/g, '-').toLowerCase()}`, // Add slugified URL
+              date: smoothie.date, // Include the date property
+            }))}
+            posts={posts}
+          />
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }

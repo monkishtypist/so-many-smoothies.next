@@ -1,4 +1,4 @@
-// app/types/smoothie.ts
+// app/_types/smoothie.ts
 
 export interface Smoothie {
   _id: string;
@@ -10,4 +10,6 @@ export interface Smoothie {
   };
   ingredients: string[];
   steps: string[];
+  date: string;
+  type: 'smoothie';
 }

@@ -21,6 +21,7 @@ body {
 }
 
 body {
+  @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50;
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
@@ -43,4 +44,14 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+h1,
+h2,
+h3 {
+  @apply font-bold text-gray-800 dark:text-gray-100;
+}
+
+button {
+  @apply px-4 py-2 rounded font-medium transition-all;
 }
