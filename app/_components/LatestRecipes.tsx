@@ -21,7 +21,7 @@ export default async function LatestRecipes() {
             title={smoothie.title}
             image={smoothie.image}
             description={smoothie.description}
-            href={`/smoothies/${smoothie.title.replace(/\s+/g, '-').toLowerCase()}`}
+            href={`/smoothie/${smoothie.slug.current}`}
             className=""
           />
         ))}

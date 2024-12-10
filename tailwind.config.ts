@@ -13,6 +13,9 @@ const config: Config = {
       colors: {
         primary: '#4CAF50', // Your brand color
       },
+      objectPosition: {
+        'near-top': 'center 30%',
+      },
     },
     plugins: [lineClamp],
   },

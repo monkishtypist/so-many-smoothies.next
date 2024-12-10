@@ -25,7 +25,7 @@ export default function Card({
         alt={image?.alt || title} // Fallback alt text
         width={300}
         height={200}
-        className="w-full h-40 object-cover"
+        className="w-full h-40 object-cover object-near-top"
       />
       <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{title}</h3>

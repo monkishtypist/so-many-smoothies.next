@@ -31,10 +31,18 @@ export async function getSmoothies(): Promise<Smoothie[]> {
   const query = `*[_type == "smoothie"] {
     _id,
     title,
+    slug,
     description,
     "image": {
       "url": image.asset->url,
       "alt": coalesce(image.alt, title)
+    },
+    "affiliateProducts": affiliateProducts[]->{
+      _id,
+      name,
+      "image": image.asset->url,
+      link,
+      category
     },
     ingredients,
     steps,

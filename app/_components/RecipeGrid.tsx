@@ -4,6 +4,9 @@ import Card from '@components/Card';
 interface Smoothie {
   _id: string;
   title: string;
+  slug: {
+    current: string;
+  };
   description: string;
   image?: {
     url: string;
@@ -55,7 +58,7 @@ export default function RecipeGrid({ smoothies, posts }: RecipeGridProps) {
         // Set href based on item type
         const href = isPost
           ? `/post/${item.slug.current}` // Use slug for posts
-          : `/smoothie/${item.title.replace(/\s+/g, '-').toLowerCase()}`; // Slugify smoothie titles
+          : `/smoothie/${item.slug.current}`; // Use slug for smoothies
 
         // Generate description dynamically
         const description = isPost
