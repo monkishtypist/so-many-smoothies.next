@@ -45,11 +45,7 @@ export async function generateStaticParams() {
   return tags.map((tag) => ({ tag }));
 }
 
-export default async function TagPage({
-  params,
-}: {
-  params: { tag: string };
-}) {
+export default async function TagPage({ params }: { params: { tag: string } }) {
   // Resolve params asynchronously to avoid sync access error
   const { tag } = await Promise.resolve(params);
   const decodedTag = decodeURIComponent(tag);
@@ -69,9 +65,7 @@ export default async function TagPage({
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
         <header className="py-6">
-          <h1 className="text-2xl font-bold">
-            Recipes with "{decodedTag}"
-          </h1>
+          <h1 className="text-2xl font-bold">Recipes with "{decodedTag}"</h1>
         </header>
         <main className="flex-grow">
           <FiltersBar tags={tags} />

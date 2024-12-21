@@ -25,10 +25,7 @@ export default function PortableTextRenderer({
               const HeadingTag = block.style as keyof JSX.IntrinsicElements; // Dynamically map to HTML tag
               if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(block.style)) {
                 return (
-                  <HeadingTag
-                    key={block._key}
-                    className={`${block.style}`}
-                  >
+                  <HeadingTag key={block._key} className={`${block.style}`}>
                     {block.children?.map((child, index) => (
                       <span key={index}>{child.text}</span>
                     ))}
@@ -48,7 +45,10 @@ export default function PortableTextRenderer({
           case 'image': // Image block
             if (block.asset?._ref) {
               const imageUrl = block.asset._ref
-                .replace('image-', 'https://cdn.sanity.io/images/YOUR_PROJECT_ID/YOUR_DATASET/')
+                .replace(
+                  'image-',
+                  'https://cdn.sanity.io/images/YOUR_PROJECT_ID/YOUR_DATASET/'
+                )
                 .replace('-jpg', '.jpg'); // Replace with actual transformation logic
               return (
                 <div key={block._key} className="mb-6">

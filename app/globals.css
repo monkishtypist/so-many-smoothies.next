@@ -53,15 +53,15 @@ h3 {
 }
 
 h1 {
-  @apply text-3xl mb-6 text-center
+  @apply text-3xl mb-6 text-center;
 }
 
 h2 {
-  @apply text-2xl mb-4
+  @apply text-2xl mb-4;
 }
 
 h3 {
-  @apply text-xl mb-2
+  @apply text-xl mb-2;
 }
 
 button {

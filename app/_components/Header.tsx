@@ -10,7 +10,7 @@ export default function Header() {
         </h1>
       </Link>
       <nav>
-      <Link
+        <Link
           href="/"
           className="text-gray-600 dark:text-gray-300 hover:underline mx-4"
         >
