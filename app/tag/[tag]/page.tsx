@@ -19,20 +19,20 @@ interface Smoothie {
   type?: 'smoothie';
 }
 
-interface Post {
-  _id: string;
-  title: string;
-  slug: {
-    current: string;
-  };
-  image?: {
-    url: string;
-    alt: string;
-  };
-  body?: Array<{ _type: string; children?: Array<{ text: string }> }>;
-  date: string;
-  type: 'post';
-}
+// interface Post {
+//   _id: string;
+//   title: string;
+//   slug: {
+//     current: string;
+//   };
+//   image?: {
+//     url: string;
+//     alt: string;
+//   };
+//   body?: Array<{ _type: string; children?: Array<{ text: string }> }>;
+//   date: string;
+//   type: 'post';
+// }
 
 export async function generateStaticParams() {
   const smoothies = await getSmoothies();
@@ -65,7 +65,7 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-50">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col">
         <header className="py-6">
-          <h1 className="text-2xl font-bold">Recipes with "{decodedTag}"</h1>
+          <h1 className="text-2xl font-bold">Recipes with {decodedTag}</h1>
         </header>
         <main className="flex-grow">
           <FiltersBar tags={tags} />
