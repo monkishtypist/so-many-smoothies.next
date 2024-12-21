@@ -15,6 +15,7 @@ export interface Smoothie {
   ingredients: string[];
   steps: string[];
   date: string;
+  tags?: string[];
   type?: 'smoothie';
 }
 

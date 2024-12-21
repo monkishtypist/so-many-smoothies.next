@@ -10,12 +10,18 @@ export default function Header() {
         </h1>
       </Link>
       <nav>
-        <Link
+      <Link
+          href="/"
+          className="text-gray-600 dark:text-gray-300 hover:underline mx-4"
+        >
+          Recipes
+        </Link>
+        {/* <Link
           href="/blog"
           className="text-gray-600 dark:text-gray-300 hover:underline mx-4"
         >
           Blog
-        </Link>
+        </Link> */}
         <Link
           href="/about"
           className="text-gray-600 dark:text-gray-300 hover:underline mx-4"

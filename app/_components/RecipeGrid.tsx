@@ -1,4 +1,5 @@
-// app/components/RecipeGrid.tsx
+'use client';
+
 import Card from '@components/Card';
 
 interface Smoothie {
@@ -12,6 +13,7 @@ interface Smoothie {
     url: string;
     alt: string;
   };
+  tags?: string[];
   date: string;
   type?: 'smoothie';
 }
@@ -37,30 +39,24 @@ type RecipeGridProps = {
 };
 
 export default function RecipeGrid({ smoothies, posts }: RecipeGridProps) {
-  // Combine smoothies and posts, sorting by date (newest first)
-  const gridItems = [...smoothies, ...posts].sort(
+  const sortedItems = [...smoothies, ...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 bg-white dark:bg-gray-900">
-      {gridItems.map((item, index) => {
-        // Determine if the item is a blog post
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 bg-white dark:bg-gray-900">
+      {sortedItems.map((item, index) => {
         const isPost = item.type === 'post';
-
-        // Adjust grid column spans for different item types
         const gridColumnSpan = isPost
           ? index === 0
             ? 'md:col-span-4'
             : 'md:col-span-2'
           : 'md:col-span-1';
 
-        // Set href based on item type
         const href = isPost
-          ? `/post/${item.slug.current}` // Use slug for posts
-          : `/smoothie/${item.slug.current}`; // Use slug for smoothies
+          ? `/post/${item.slug.current}`
+          : `/smoothie/${item.slug.current}`;
 
-        // Generate description dynamically
         const description = isPost
           ? item.body?.[0]?.children?.map((child) => child.text).join(' ') ||
             'Read more...'
@@ -77,6 +73,6 @@ export default function RecipeGrid({ smoothies, posts }: RecipeGridProps) {
           />
         );
       })}
-    </section>
+    </div>
   );
 }

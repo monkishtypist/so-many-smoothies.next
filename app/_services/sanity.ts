@@ -8,7 +8,7 @@ const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-01-01',
-  useCdn: false, // Use CDN for better performance
+  useCdn: false, // Set to true for production if you want faster responses
 });
 
 export async function getPosts(): Promise<Post[]> {
@@ -46,10 +46,15 @@ export async function getSmoothies(): Promise<Smoothie[]> {
     },
     ingredients,
     steps,
-    tags[]->{
-      title
-    },
+    tags,
     date
+  }`;
+  return await sanityClient.fetch(query);
+}
+
+export async function getAboutPage(): Promise<{ content: any[] }> {
+  const query = `*[_type == "about"][0] { 
+    content 
   }`;
   return await sanityClient.fetch(query);
 }
