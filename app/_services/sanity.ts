@@ -3,6 +3,7 @@
 import { createClient } from '@sanity/client';
 import { Post } from '../_types/post';
 import { Smoothie } from '../_types/smoothie';
+import { BlockContent } from '../_types/blockContent';
 
 const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
@@ -52,9 +53,9 @@ export async function getSmoothies(): Promise<Smoothie[]> {
   return await sanityClient.fetch(query);
 }
 
-export async function getAboutPage(): Promise<{ content: any[] }> {
+export async function getAboutPage(): Promise<{ content: BlockContent }> {
   const query = `*[_type == "about"][0] { 
     content 
   }`;
-  return await sanityClient.fetch(query);
+  return await sanityClient.fetch<{ content: BlockContent }>(query);
 }

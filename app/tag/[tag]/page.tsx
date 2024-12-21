@@ -1,7 +1,7 @@
 // app/tag/[tag]/page.tsx
 import FiltersBar from '@components/FiltersBar';
 import RecipeGrid from '@components/RecipeGrid';
-import { getSmoothies, getPosts } from '@services/sanity';
+import { getSmoothies } from '@services/sanity';
 
 interface Smoothie {
   _id: string;
@@ -51,7 +51,7 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
   const decodedTag = decodeURIComponent(tag);
 
   const smoothies = await getSmoothies();
-  const posts = await getPosts();
+  // const posts = await getPosts();
 
   const filteredSmoothies = smoothies.filter((smoothie: Smoothie) =>
     smoothie.tags?.includes(decodedTag)
