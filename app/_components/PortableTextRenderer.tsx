@@ -27,9 +27,7 @@ export default function PortableTextRenderer({
                 return (
                   <HeadingTag
                     key={block._key}
-                    className={`mb-4 font-bold ${
-                      block.style === 'h1' ? 'text-3xl' : block.style === 'h2' ? 'text-2xl' : 'text-xl'
-                    }`}
+                    className={`${block.style}`}
                   >
                     {block.children?.map((child, index) => (
                       <span key={index}>{child.text}</span>

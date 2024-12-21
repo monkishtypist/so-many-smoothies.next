@@ -12,9 +12,6 @@ export default async function AboutPage() {
         <Header />
         <main className="flex-grow py-12">
           <section className="max-w-3xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">
-              About So Many Smoothies
-            </h1>
             {aboutData?.content ? (
               <PortableText value={aboutData.content} />
             ) : (
