@@ -47,7 +47,6 @@ export async function getSmoothies(): Promise<Smoothie[]> {
     },
     ingredients,
     steps,
-    tags,
     date
   }`;
   return await sanityClient.fetch(query);

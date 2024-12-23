@@ -13,7 +13,6 @@ interface Smoothie {
     url: string;
     alt: string;
   };
-  tags?: string[];
   date: string;
   type?: 'smoothie';
 }
